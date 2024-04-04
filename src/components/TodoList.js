@@ -44,6 +44,7 @@ const Todo = () => {
             <InputCheck
               id={todo.id}
               name={todo.text}
+              checked={todo.completed}
               onClick={() => handleToggleComplete(todo.id)}
             />
             <Label for={todo.text}>{todo.text}</Label>

@@ -21,6 +21,8 @@ export const Title = styled.h1`
     color: #d4a4fc;
 `;
 
+
+
 export const InputText = styled.input.attrs({ 
     type: 'text'
   })`

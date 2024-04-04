@@ -4,14 +4,17 @@ import styles from "./page.module.css";
 import styled from "styled-components";
 import React from "react";
 import { Provider } from "react-redux";
-import store from "../lib/store";
 import Todo from "../components/TodoList";
+import { persistor, store } from '../lib/store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 export default function Home() {
 
   return (
-    <Provider store={store}>
-       <Todo /> 
-    </Provider>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <Todo />
+        </PersistGate>
+      </Provider>
   );
 }

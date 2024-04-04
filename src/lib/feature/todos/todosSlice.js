@@ -15,10 +15,14 @@ const todoSlice = createSlice({
     },
 
     //create reducer name "toggleComplete" for handle when user complete the todo list
-    toggleComplete: (state, action) => {
+    toggleCheckbox: (state, action) => {
       const todo = state.find((todo) => todo.id === action.payload);
-      if (todo) {
-        todo.completed = !todo.completed;
+      const index = state.findIndex((todo) => todo.id === action.payload);
+      if (todo.completed) {
+        state.splice(index, 1, { ...state[index], completed: false });
+      }
+      else{
+        state.splice(index, 1, { ...state[index], completed: true });
       }
     },
 
@@ -27,10 +31,11 @@ const todoSlice = createSlice({
       const index = state.findIndex((todo) => todo.id === action.payload);
       if (index !== -1) {
         state.splice(index, 1);
-      }
+      };
     },
+
   },
 });
 
-export const { addTodo, toggleComplete, deleteTodo } = todoSlice.actions;
+export const { addTodo, toggleCheckbox, deleteTodo} = todoSlice.actions;
 export default todoSlice.reducer;

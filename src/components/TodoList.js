@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addTodo, toggleComplete, deleteTodo } from "../lib/feature/todos/todosSlice";
-import {Title, InputText, AddButton, Flex, All, InputCheck, DelButton, Label, FlexList} from "../styles/TodoList.styled";
+import {Title, InputText, AddButton, Flex, All, InputCheck, DelButton, Label} from "../styles/TodoList.styled";
 import { ClipboardText } from "@phosphor-icons/react";
 
 const Todo = () => {
@@ -39,8 +39,7 @@ const Todo = () => {
       <AddButton onClick={handleAddTodo}> + </AddButton>
       </Flex>
       <ul>
-        
-        {todos.map((todo) => (
+        {todos?.map((todo) => (
           <div>
             <InputCheck
               id={todo.id}

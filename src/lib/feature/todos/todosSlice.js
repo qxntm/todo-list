@@ -18,11 +18,13 @@ const todoSlice = createSlice({
     toggleCheckbox: (state, action) => {
       const todo = state.find((todo) => todo.id === action.payload);
       const index = state.findIndex((todo) => todo.id === action.payload);
+      const Length = state.length;
       if (todo.completed) {
         state.splice(index, 1, { ...state[index], completed: false });
       }
       else{
-        state.splice(index, 1, { ...state[index], completed: true });
+        state.splice(Length, 0, { ...state[index], completed: true });
+        state.splice(index, 1);
       }
     },
 

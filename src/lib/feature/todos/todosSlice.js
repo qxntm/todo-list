@@ -11,7 +11,8 @@ const todoSlice = createSlice({
         text: action.payload,
         completed: false,
       };
-      state.push(newTodo);
+      const index = state.findIndex((todo) => todo.completed === true);
+      state.splice(index, 0, (newTodo));
     },
 
     //create reducer name "toggleComplete" for handle when user complete the todo list

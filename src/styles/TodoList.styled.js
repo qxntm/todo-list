@@ -8,6 +8,7 @@ export const All = styled.div`
     min-height: 100vh;
     width: auto;
     font-family: monospace;
+    background-color: #121212;
 `;
 
 export const Title = styled.h1`
@@ -18,6 +19,7 @@ export const Title = styled.h1`
     font-weight: bold;
     font-family: monospace;
     margin-bottom: 0.5rem;
+    padding-top: 2rem;
     color: #d4a4fc;
 `;
 

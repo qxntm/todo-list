@@ -1,3 +1,25 @@
+## What does the project do?
+
+This is a project for learning, practice ,and understanding Redux Architecture by implementing a `Todo-List` by using Redux and Javascript along with the styled components.
+
+What is the function of it?
+```
+- add new task
+- delete the task
+- toggle to complete/toggle to uncomplete
+- use local storage to store the list of task and also its status
+- the completed task will rearrange to the bottom of the list.
+```
+
+Future Improvement:
+```
+- switch from styled components to Tailwind.css.
+- be able to makes notes for every tasks.
+- be able to toggle view of completed task and uncomplete ones.
+- styles the checkbox.
+```
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

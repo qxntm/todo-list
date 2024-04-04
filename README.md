@@ -17,6 +17,7 @@ Future Improvement:
 - be able to makes notes for every tasks.
 - be able to toggle view of completed task and uncomplete ones.
 - styles the checkbox.
+- be able to rearrange the tasks.
 ```
 
 

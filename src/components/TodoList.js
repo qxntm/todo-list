@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addTodo, toggleComplete, deleteTodo } from "../lib/feature/todos/todosSlice";
+import { addTodo, toggleComplete, deleteTodo, toggleCheckbox } from "../lib/feature/todos/todosSlice";
 import {Title, InputText, AddButton, Flex, All, InputCheck, DelButton, Label} from "../styles/TodoList.styled";
 import { ClipboardText } from "@phosphor-icons/react";
 
@@ -21,7 +21,7 @@ const Todo = () => {
   };
 
   const handleToggleComplete = (id) => {
-    dispatch(toggleComplete(id));
+    dispatch(toggleCheckbox(id));
   };
 
   const handleDeleteTodo = (id) => {

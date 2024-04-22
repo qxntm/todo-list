@@ -23,8 +23,6 @@ export const Title = styled.h1`
     color: #d4a4fc;
 `;
 
-
-
 export const InputText = styled.input.attrs({ 
     type: 'text'
   })`
@@ -63,16 +61,15 @@ export const InputCheck = styled.input.attrs({
     font-size: 1rem;
     padding-left: 1rem;
     background: #1f1725;
-    margin-top: 1.5rem;
+    margin-top: 0;
 `;
 
 export const Label = styled.label`
     font-size: 1rem;
-    margin: 2rem 0 1rem 0.5rem;
-          ${InputCheck}:checked + && {
-            text-decoration: line-through;
-            color: #342c3a;
-          }
+      ${InputCheck}:checked + && {
+        text-decoration: line-through;
+        color: #342c3a;
+      }
 `;
 
 export const DelButton = styled.button.attrs({ 
@@ -88,4 +85,11 @@ export const DelButton = styled.button.attrs({
     ${InputCheck}:checked + && {
         color: #342c3a;
       }
+`;
+
+export const List = styled.div`
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1rem 0 0 0;
 `;

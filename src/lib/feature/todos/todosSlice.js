@@ -10,6 +10,7 @@ const todoSlice = createSlice({
         id: Date.now(),
         text: action.payload,
         completed: false,
+        urgency:'toDo'
       };
       const index = state.findIndex((todo) => todo.completed === true);
       state.splice(index, 0, (newTodo));
@@ -36,6 +37,25 @@ const todoSlice = createSlice({
         state.splice(index, 1);
       };
     },
+
+    setUrgency: (state, action) => {
+      const todo = state.find((todo) => todo.id === action.payload);
+      const index = state.findIndex((todo) => todo.id === action.payload);
+      switch (action.payload){
+        case 'urgent':
+          return state.splice(index, 1, {...todo,urgency: 'urgent'});
+        case 'important':
+          return state.splice(index, 1, {...todo,urgency: 'important'});
+        case 'waitingOn':
+          return state.splice(index, 1, {...todo,urgency: 'waitingOn'});
+        case 'toDo':
+          return state.splice(index, 1, {...todo,urgency: 'toDo'});
+        case 'maybe':
+          return state.splice(index, 1, {...todo,urgency: 'maybe'});
+        default:
+          return state;
+      }
+    }
 
   },
 });

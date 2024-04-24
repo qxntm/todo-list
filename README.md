@@ -1,13 +1,14 @@
 ## What does the project do?
 
-This is a project for learning, practice ,and understanding Redux Architecture by implementing a `Todo-List` by using Redux and Javascript along with the styled components.
+This is a project for learning, practice ,and understanding Redux Architecture by implementing a `Todo-List` by using Redux, Javascript, react-select and react-datepicker along with the styled components.
 
 What is the function of it?
 ```
 - add new task
 - delete the task
 - toggle to complete/toggle to uncomplete
-- add/edit urgency of that task
+- add/edit urgency status of that task
+- add deadline date of that task
 - use local storage to store the list of task, its status and urgency
 - the completed task will rearrange to the bottom of the list.
 ```

@@ -31,13 +31,38 @@ const UrgencySelector = ({ todo, urgencyOptions }) => {
   };
 
   const customStyles = {
+    control: (base, state) => ({
+        ...base,
+        background: "#121212",
+        borderRadius: state.isFocused ? '1rem 1rem 0 0' : '1rem',
+        boxShadow: state.isFocused ? null : null,
+        color: 'white',
+        borderColor: state.isFocused ? "#939393" : "#939393"
+    }),
+    menu: base => ({
+        ...base,
+        borderRadius: 0,
+        marginTop: 0,
+        color: 'white'
+    }),
+    menuList: base => ({
+        ...base,
+        padding: 0,
+        color: 'white',
+        borderColor: '1px solid #9d46f4'
+    }),
     option: (provided, state) => ({
       ...provided,
-      borderBottom: '1px dotted pink',
-      color: state.isSelected ? 'white' : 'black',
-      backgroundColor: state.isSelected ? 'purple' : 'white',
-      padding: 20,
+      borderColor: '1px solid #9d46f4',
+      color: state.isSelected ? 'white' : state.data.color,
+      backgroundColor: state.isSelected ? state.data.color : '#121212',
+      padding: 10,
+      margin: 0
     }),
+    singleValue: (provided, state) => ({
+        ...provided,
+        color: state.data.color,
+      }),
   };
 
   return (

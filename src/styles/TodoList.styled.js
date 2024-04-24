@@ -43,7 +43,6 @@ export const AddButton = styled.button.attrs({
     font-weight: bold;
     border: 2px solid #9d46f4;
     border-radius: 2rem;
-    margin: 0 0 0 0.5rem;
 `;
 
 export const Flex = styled.div`
@@ -51,6 +50,7 @@ export const Flex = styled.div`
     justify-content: center;
     align-items: center;
     margin: 1rem 0 0 0;
+    gap: 1rem;
 `;
 
 export const InputCheck = styled.input.attrs({ 
@@ -89,7 +89,8 @@ export const DelButton = styled.button.attrs({
 `;
 
 export const List = styled.div`
-      display: flex;
+      display: grid;
+      grid-template-columns: 10px 2fr 150px 1fr 0.25fr;
       align-items: center;
       gap: 1rem;
       margin: 1rem 0 0 0;
@@ -107,5 +108,9 @@ export const DeadLine = styled.div`
     font-family: monospace;
     display: grid;
     gap: 3px;
-    margin: 0 1rem 0 0;
+    margin: 0 0 0 0;
+    color: #939393;
+`
+export const DeadLineDate = styled.div`
+    color: #9d46f4;
 `

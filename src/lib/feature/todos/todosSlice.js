@@ -5,13 +5,14 @@ const todoSlice = createSlice({
   initialState: [],
   reducers: {
     //create reducer name "addTodo" for adding new task
-    addTodo: (state, action) => {
+    addTodo: (state = initialState, action) => {
+      const { text, deadLine } = action.payload;
       const newTodo = {
         id: Date.now(),
-        text: action.payload,
+        text: action.payload.text,
         completed: false,
         urgency:'toDo',
-        deadLine: ''
+        deadLine: action.payload.deadLine
       };
       const index = state.findIndex((todo) => todo.completed === true);
       state.splice(index, 0, (newTodo));

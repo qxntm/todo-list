@@ -1,12 +1,28 @@
-import React, { useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addTodo, setUrgency, deleteTodo, toggleCheckbox } from "../lib/feature/todos/todosSlice";
-import {Title, InputText, AddButton, Flex, All, InputCheck, DelButton, Label, List} from "../styles/TodoList.styled";
+import { addTodo, deleteTodo, toggleCheckbox, setDeadLine } from "../lib/feature/todos/todosSlice";
+import { 
+  Title, 
+  InputText, 
+  AddButton, 
+  Flex, 
+  All, 
+  InputCheck, 
+  DelButton, 
+  Label, 
+  List,
+  DatePickerStyled,
+  DeadLine } from "../styles/TodoList.styled";
 import { ClipboardText } from "@phosphor-icons/react";
-import Select from "react-select";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import UrgencySelector from "./urgencySelector";
 
 const Todo = () => {
   const [text, setText] = useState("");
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
   const todos = useSelector((state) => state.todos);
   const dispatch = useDispatch();
 
@@ -21,21 +37,16 @@ const Todo = () => {
     }
   };
 
+  const handleDeadLine = (value,id) => {
+    dispatch(setDeadLine(value,id))
+  }
+
   const handleToggleComplete = (id) => {
     dispatch(toggleCheckbox(id));
   };
 
   const handleDeleteTodo = (id) => {
     dispatch(deleteTodo(id));
-  };
-
-  const handleSelectUrgency = (todoId, selectedOption) => {
-    console.log(todoId)
-    console.log(selectedOption)
-    if(selectedOption){
-      dispatch(setUrgency(todoId));
-      selectedOption(null);
-    }
   };
 
   const urgencyOptions = [
@@ -45,7 +56,12 @@ const Todo = () => {
     { value: 'toDo', label: 'To Do', color: '#00bcd4' },
     { value: 'maybe', label: 'Maybe?', color: '#575757' },
   ];
-  
+
+  const DatePickerStyle = forwardRef(({ value, onClick }, ref) => (
+    <DatePickerStyled onClick={onClick} ref={ref}>
+      {value}
+    </DatePickerStyled>
+  ));
 
   return (
     <All>
@@ -54,8 +70,18 @@ const Todo = () => {
         Todo List
       </Title>
       <Flex>
-      <InputText value={text} placeholder="Enter New Task" onChange={handleInputChange} />
-      <AddButton onClick={handleAddTodo}> + </AddButton>
+        <DeadLine>
+          <p>Dead Line</p>
+          <DatePickerStyled>
+            <DatePicker
+              selected={selectedDate}
+              onChange={() => handleDeadLine(value)}
+              customInput={<DatePickerStyle />}
+            />
+          </DatePickerStyled>
+        </DeadLine>
+        <InputText value={text} placeholder="Enter New Task" onChange={handleInputChange} />
+        <AddButton onClick={handleAddTodo}> + </AddButton>
       </Flex>
       <ul>
         {todos?.map((todo) => (
@@ -64,13 +90,12 @@ const Todo = () => {
               id={todo.id}
               name={todo.text}
               checked={todo.completed}
-              onClick={() => handleToggleComplete(todo.id)}
+              onChange={() => handleToggleComplete(todo.id)}
             />
             <Label for={todo.text}>{todo.text}</Label>
-            <Select
-              defaultValue={todo.urgency}
-              onChange={handleSelectUrgency}
-              options={urgencyOptions}
+            <UrgencySelector
+              todo={todo}
+              urgencyOptions={urgencyOptions}
             />
             <DelButton onClick={() => handleDeleteTodo(todo.id)}> - </DelButton>
           </List>

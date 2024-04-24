@@ -7,8 +7,6 @@ import { Provider } from "react-redux";
 import Todo from "../components/TodoList";
 import { persistor, store } from '../lib/store';
 import { PersistGate } from 'redux-persist/integration/react';
-import LogRocket from 'logrocket';
-LogRocket.init('zbfi9v/todo-list');
 
 export default function Home() {
 

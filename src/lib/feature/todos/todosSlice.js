@@ -10,7 +10,8 @@ const todoSlice = createSlice({
         id: Date.now(),
         text: action.payload,
         completed: false,
-        urgency:'toDo'
+        urgency:'toDo',
+        deadLine: ''
       };
       const index = state.findIndex((todo) => todo.completed === true);
       state.splice(index, 0, (newTodo));
@@ -38,27 +39,32 @@ const todoSlice = createSlice({
       };
     },
 
-    setUrgency: (state, action) => {
-      const todo = state.find((todo) => todo.id === action.payload);
-      const index = state.findIndex((todo) => todo.id === action.payload);
-      switch (action.payload){
-        case 'urgent':
-          return state.splice(index, 1, {...todo,urgency: 'urgent'});
-        case 'important':
-          return state.splice(index, 1, {...todo,urgency: 'important'});
-        case 'waitingOn':
-          return state.splice(index, 1, {...todo,urgency: 'waitingOn'});
-        case 'toDo':
-          return state.splice(index, 1, {...todo,urgency: 'toDo'});
-        case 'maybe':
-          return state.splice(index, 1, {...todo,urgency: 'maybe'});
-        default:
-          return state;
+    setUrgency: (state = initialState, action) => {
+      const { id, value } = action.payload;
+      const index = state.findIndex(todo => todo.id === id);
+      if (index === -1) {
+        return state;
       }
+      const updatedTodo = {
+        ...state[index],
+        urgency: value
+      };
+      const newState = [
+        ...state.slice(0, index),
+        updatedTodo,
+        ...state.slice(index + 1)
+      ];
+      return newState;
+    },
+
+    setDeadLine: (state,action) => {
+      console.log('welcome to add deadline');
+      const index = state.findIndex((todo) => todo.id === action.payload);
+      state.splice(index, 1, { ...state[index], deadLine:{state} });
     }
 
   },
 });
 
-export const { addTodo, toggleCheckbox, deleteTodo} = todoSlice.actions;
+export const { addTodo, toggleCheckbox, deleteTodo, setUrgency, setDeadLine} = todoSlice.actions;
 export default todoSlice.reducer;

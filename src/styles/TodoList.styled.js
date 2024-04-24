@@ -50,6 +50,7 @@ export const Flex = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 1rem 0 0 0;
 `;
 
 export const InputCheck = styled.input.attrs({ 
@@ -93,3 +94,18 @@ export const List = styled.div`
       gap: 1rem;
       margin: 1rem 0 0 0;
 `;
+
+export const DatePickerStyled = styled.button`
+    font-family: monospace;
+    background-color: #9d46f4;
+    color: #ffffff;
+    border: 3px solid #9d46f4;
+    border-radius: 3px;
+`
+
+export const DeadLine = styled.div`
+    font-family: monospace;
+    display: grid;
+    gap: 3px;
+    margin: 0 1rem 0 0;
+`

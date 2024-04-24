@@ -34,7 +34,7 @@ const UrgencySelector = ({ todo, urgencyOptions }) => {
     control: (base, state) => ({
         ...base,
         background: "#121212",
-        borderRadius: state.isFocused ? '1rem 1rem 0 0' : '1rem',
+        borderRadius: state.isFocused ? '1rem' : '1rem',
         boxShadow: state.isFocused ? null : null,
         color: 'white',
         borderColor: state.isFocused ? "#939393" : "#939393"
@@ -48,12 +48,10 @@ const UrgencySelector = ({ todo, urgencyOptions }) => {
     menuList: base => ({
         ...base,
         padding: 0,
-        color: 'white',
-        borderColor: '1px solid #9d46f4'
+        color: 'white'
     }),
     option: (provided, state) => ({
       ...provided,
-      borderColor: '1px solid #9d46f4',
       color: state.isSelected ? 'white' : state.data.color,
       backgroundColor: state.isSelected ? state.data.color : '#121212',
       padding: 10,

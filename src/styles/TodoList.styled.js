@@ -49,7 +49,7 @@ export const Flex = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 1rem 0 0 0;
+    margin: 0.5rem 0 0 0;
     gap: 1rem;
 `;
 
@@ -107,8 +107,8 @@ export const DatePickerStyled = styled.button`
 export const DeadLine = styled.div`
     font-family: monospace;
     display: grid;
-    gap: 3px;
-    margin: 0 0 0 0;
+    gap: 5px;
+    margin: 0 0 1.05rem 0;
     color: #939393;
 `
 export const DeadLineDate = styled.div`

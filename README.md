@@ -7,13 +7,13 @@ What is the function of it?
 - add new task
 - delete the task
 - toggle to complete/toggle to uncomplete
-- use local storage to store the list of task and also its status
+- add/edit urgency of that task
+- use local storage to store the list of task, its status and urgency
 - the completed task will rearrange to the bottom of the list.
 ```
 
 Future Improvement:
 ```
-- switch from styled components to Tailwind.css.
 - be able to makes notes for every tasks.
 - be able to toggle view of completed task and uncomplete ones.
 - styles the checkbox.
